@@ -1,13 +1,13 @@
 package Bundle::XML;
 
-$VERSION = '0.1';
+$VERSION = '0.11';
 
 
 __END__
 
 =head1 NAME
 
-Bundle::XML - A bundle to install all XML-related modules
+Bundle::XML - A bundle to install XML-related modules
 
 =head1 SYNOPSIS
 
@@ -15,25 +15,21 @@ C<perl -MCPAN -e 'install Bundle::XML'>
 
 =head1 CONTENTS
 
-Bundle::LWP		- prerequisite, along with:
-
-Date::Manip
-
-Parse::Yapp
-
-LWP::UserAgent
-
-Data::Dumper
-
-Storable
-
 XML::Parser		- Clark Cooper, Larry Wall
 
-XML::Encoding		- CLark Cooper
+XML::Parser::EasyTree	- Eric Bohlman
 
-E/EN/ENNO/XML-DOM-1.25.tar.gz		- Enno Derksen, Clark Cooper
+XML::LibXML	- Matt Sergeant and others
 
-XML::Parser::PerlSAX		- Ken MacLeod; aso wrote:
+XML::LibXSLT	- Matt Sergeant
+
+XML::Sablotron	- Pavel Hlavnicka
+
+XML::Encoding		- Clark Cooper
+
+XML::DOM		- Enno Derksen, Clark Cooper, TJ Mather
+
+XML::Parser::PerlSAX		- Ken MacLeod; also wrote:
 
 XML::Grove
 
@@ -63,13 +59,9 @@ XML::PatAct::PatternTempl
 
 XML::PatAct::ActionTempl
 
-XML::Catalog		- Eric Bohlman
-
 XML::DT		- J Joao
 
 XML::Dumper		- Jonathan Eisenzopf; also wrote:
-
-XML::RSS
 
 XML::Registry
 
@@ -79,11 +71,13 @@ XML::Node		- Chang Liu
 
 XML::QL		- Matt Sergeant, Robert Hanson
 
+XML::Schematron
+
+XML::SemanticDiff
+
 XML::Simple		- Grant McLean
 
 XML::Stream		- Ryan Eatmon
-
-XML::Template		- Geoffrey R. Hutchison
 
 XML::Twig		- Michel Rodriguez
 
@@ -93,42 +87,36 @@ XML::XPath	- Matt Sergeant; also wrote:
 
 XML::miniXQL
 
-DBIx::XML_RDB
+XML::XSLT		- Geert Josten, Egon Willighagen
 
-XSLT		- Geert Josten, Egon Willighagen
+XML::Handler::YAWriter		- Michael Koehne
 
-XML::Handler::YAWriter		- Michael Koehne; also wrote:
+XML::XQL 	- Enno Derksen
 
-XML::Edifact
-
-E/EN/ENNO/XML-XQL-0.61.tar.gz 	- Enno Derksen
+XML::XSLT::Wrapper	- Colin Muller
 
 =head1 DESCRIPTION
 
-This bundle gathers together all of the modules in the XML
-directory of CPAN, along with some other XML-related modules,
-and (I think) all of the modules on which these depend.
+This bundle gathers together those XML-related modules on CPAN which are
+intended to enable the parsing, use and creation of XML documents in
+general. It excludes modules which are intended to work with specific
+XML document types or with specific non-XML data sources.
 
-In this version (0.1), XML::DOM and XML::XQL are installed via 
-hard-wired links to versions earlier than the current ones, 
-because the current versions fail to install automatically. 
-During the install, CPAN will attempt but fail to install the 
-latest versions of these from libxml-enno-1.00. Ignore the
-errors: although this fails, XML::DOM and XML::XQL are still 
-installed, but at the earlier versions (1.25 and 0.61 
-respectively).  Other modules dependent on them should still 
-work as well.
+Modules for which the installation process may fail because they require
+C and/or C++ libraries include XML::Parser, XML::LibXML, XML::LibXSLT
+and XML::Sablotron:
 
-At one stage during the install, you will be prompted to
-provide the XML::Edifact installer with some input; the 
-installation will pause until you do so.
+XML::Parser requires the expat library, available from
+expat.sourceforge.net.
 
-Left out of this version (because make fails):
-XML::Filter::Hekeln
+XML::LibXML requires the libxml library and XML::LibXSLT requires the
+libxslt library, both available from www.xmlsoft.org.
 
-In this version, I have ignored the fact that certain parts 
-of certain modules require specific versions (5.005 or 
-5.004 or 5.003) of Perl.  Sorry.
+XML::Sablotron requires the Sablotron library, available from
+www.gingerall.com.
+
+I have ignored the fact that certain parts of certain modules require
+specific versions of Perl.
 
 =head1 AUTHOR
 

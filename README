@@ -1,6 +1,6 @@
-Bundle::XML - CPAN Bundle for XML modules and their dependencies
+Bundle::XML - CPAN Bundle for XML-related modules
 
-Version 0.1 - 2000-02-27
+Version 0.11 - 2000-07-23
 Bundled by: Colin Muller <colin@durbanet.co.za>
 
 To install this Bundle file locally:
@@ -14,28 +14,24 @@ perldoc Bundle::XML
 Finally, to install the XML modules which the bundle lists:
 perl -MCPAN -e 'install Bundle::XML'
 
-This bundle gathers together all of the modules in the XML
-directory of CPAN, along with some other XML-related modules,
-and (I think) all of the modules on which these depend.
+This bundle gathers together those XML-related modules on CPAN which are
+intended to enable the parsing, use and creation of XML documents in
+general. It excludes modules which are intended to work with specific
+XML document types or with specific non-XML data sources.
 
-In this version (0.1), XML::DOM and XML::XQL are installed via 
-hard-wired links to versions earlier than the current ones, 
-because the current versions fail to install automatically. 
-During the install, CPAN will attempt but fail to install the 
-latest versions of these from libxml-enno-1.00. Ignore the
-errors: although this fails, XML::DOM and XML::XQL are still 
-installed, but at the earlier versions (1.25 and 0.61 
-respectively).  Other modules dependent on them should still 
-work as well.
+Modules for which the installation process may fail because they require
+C and/or C++ libraries include XML::Parser, XML::LibXML, XML::LibXSLT
+and XML::Sablotron:
 
-At one stage during the install, you will be prompted to
-provide the XML::Edifact installer with some input; the 
-installation will pause until you do so.
+XML::Parser requires the expat library, available from
+expat.sourceforge.net.
 
-Left out of this version (because make fails):
-XML::Filter::Hekeln
+XML::LibXML requires the libxml library and XML::LibXSLT requires the
+libxslt library, both available from www.xmlsoft.org.
 
-In this version, I have ignored the fact that certain parts 
-of certain modules require specific versions (5.005 or 
-5.004 or 5.003) of Perl.  Sorry.
+XML::Sablotron requires the Sablotron library, available from
+www.gingerall.com.
+
+I have ignored the fact that certain parts of certain modules require
+specific versions of Perl.
 
